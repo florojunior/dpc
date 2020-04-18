@@ -6,6 +6,7 @@ import Parametro from '../components/Parametro'
 import TipoPergunta from '../components/TipoPergunta'
 import Pergunta from '../components/Pergunta'
 import Formulario from '../components/Formulario'
+import Questionario from '../components/Questionario'
 
 Vue.use(VueRouter)
 
@@ -39,12 +40,15 @@ Vue.use(VueRouter)
     path: '/formulario',
     name: 'Formulario',
     component: Formulario
+  },
+  {
+    path: '/questionario',
+    name: 'questionario',
+    component: Questionario
   }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
   routes
 })
 

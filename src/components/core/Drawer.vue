@@ -170,23 +170,28 @@ export default {
         menu:[
         
             {
-                descricao:'Relatórios',
-                path:'/relatorio',
+                descricao:'Formulário',
+                path:'/formulario',
                 icon:'mdi-file-multiple'
             },
             {
-                descricao:'Banco de Conhecimento',
-                path:'/bancoConhecimento',
+                descricao:'Questionario',
+                path:'/questionario',
                 icon:'mdi-cube-outline'
             },
             {
-                descricao:'Usuário',
-                path:'/usuario',
+                descricao:'Perguntas',
+                path:'/pergunta',
                 icon:'mdi-account-plus'
             },
             {
-                descricao:'Turno',
-                path:'/turno',
+                descricao:'Parametros',
+                path:'/parametro',
+                icon:'mdi-clock'
+            },
+            {
+                descricao:'Usuario',
+                path:'/usuario',
                 icon:'mdi-clock'
             }
         ],

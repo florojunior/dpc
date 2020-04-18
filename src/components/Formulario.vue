@@ -28,16 +28,9 @@
                           <v-chip :color="getColor(item.ativo)" dark>{{ item.ativo === 'T' ? 'Ativo':'Inativo' }}</v-chip>
                       </template>
                       <template v-slot:item.acoes="{ item }">
-                          <v-row align="center" align-content="stretch" justify="center">
-                          <v-col cols="3" sm="1">
-                              <v-btn color="primary" text icon small @click="openDialog(item)">
-                              <v-icon>edit</v-icon>
-                              </v-btn>
-                          </v-col>
-                          <v-col cols="3" sm="1">
-                              <v-switch color="blue" @change="inactive(item)" :input-value="item.ativo==='T'"></v-switch>
-                          </v-col>
-                          </v-row>
+                        <v-btn color="primary" text icon small @click="deleteItem(item)">
+                          <v-icon>delete</v-icon>
+                        </v-btn>
                       </template>
                       </v-data-table>
                   </v-col>
@@ -84,12 +77,11 @@
                                 ></v-select>
                               </v-col>
                             </v-row>
-                            {{perguntaParametro}}
                             <!--1 Tipo Escolhe Unica-->
-                            <div v-if="perguntaParametro.tipoPergunta && perguntaParametro.tipoPergunta.codigo == 1">
+                            <div v-if="perguntaParametro.tipoPergunta">
                               <v-row>
                                 <v-col cols="12">
-                                  <v-btn style="width:100%" color="primary" @click="addParam()">
+                                  <v-btn style="width:100%" color="primary" @click="addParam()" v-if="perguntaParametro.tipoPergunta.codigo == 1">
                                       Adicionar Novo Parametro
                                   </v-btn>
                                 </v-col>
@@ -108,7 +100,7 @@
                                   ></v-select>
                                 </v-col>
                                 <v-col>
-                                  <v-radio-group v-model="parametrosModelList[index].inapta" row :mandatory='true'>
+                                  <v-radio-group v-model="parametrosModelList[index].inapta" row :mandatory='true' :disabled="perguntaParametro.tipoPergunta.codigo > 1">
                                     <v-radio label="Inapto" value="S"></v-radio>
                                     <v-radio label="Apto" value="N"></v-radio>
                                   </v-radio-group>
@@ -171,13 +163,7 @@ export default {
           sortable: true,
           value: 'descricao',
         },
-        {
-          text: 'Status',
-          align: 'center',
-          sortable: true,
-          value: 'ativo',
-        },
-        { text: 'Ações', value: 'acoes', align: 'center' },
+        { text: 'Ações', value: 'acoes', sortable: true,align: 'left' },
 
     ]
   }),
@@ -205,6 +191,13 @@ export default {
     },
     adicionarListParametros(){
       this.perguntaParametro.tipoPergunta.parametros = [];
+      this.parametrosModelList = [];
+      if(this.perguntaParametro.tipoPergunta.codigo > 1){
+        this.parametrosModelList.push({
+          codigo: null,
+          inapta: "N"
+        });
+      }
     },
     openDialog(pergunta){
       if(pergunta !== undefined){
@@ -235,11 +228,8 @@ export default {
         }
       }      
     },
-    inactive(pergunta){
-      pergunta.ativo = pergunta.ativo === 'T'? 'F':'T';
-      this.update(pergunta).then(() => {
-            this.getAll();
-      });
+    deleteItem(item){
+      return this.$http.del('/pergunta-parametro',item);
     },
     getAll(){
       this.$http.get('/pergunta-parametro').then(res => {
