@@ -1,5 +1,5 @@
 <template>
-  <v-app :style="{'background-image': !$vuetify.breakpoint.xsOnly?'url(' + require('./assets/background.jpg') + ')':'url(' + require('./assets/background.jpg') + ')', 'background-size': '100% 100%'}">
+  <v-app :style="{'background-image': !$vuetify.breakpoint.xsOnly?'url()':'url()', 'background-size': '100% 100%'}">
     <core-drawer v-if="!hide" />
 
     <core-view />

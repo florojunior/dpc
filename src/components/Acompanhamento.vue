@@ -75,6 +75,10 @@ export default {
                 }
             }).then((res)=>{
                 this.listStatus = res.data;
+                console.log(this.listStatus);
+                if(this.listStatus.length == 0){
+                    this.$router.push({name: 'questionario'},{});
+                }
             })
         }
     },

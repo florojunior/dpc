@@ -35,21 +35,7 @@
                     <span style="color: rgb(255, 136, 0); font-style: italic"></span>
                 </v-col>
             </v-row>
-            <v-list-item @click="logout()" class="hvr-leave-item">
-                <v-list-item-content style="padding: 0px;">
-                    <v-list-item-title class="text-center">
-                        <v-row>
-                            <v-col>
-                                <v-icon class="hvr-leave-icon">mdi-logout</v-icon>
-                            </v-col>
-                            <v-col class="d-flex justify-center align-center">
-                                <span class="hvr-leave-text text-center">Sair</span>
-                            </v-col>
-                            <v-col><br/></v-col>
-                        </v-row>
-                    </v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
+
         </div>  
         </v-navigation-drawer>
         <v-app-bar app color="primary" justify="space-between">         

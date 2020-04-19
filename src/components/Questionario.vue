@@ -29,7 +29,7 @@
                                 <v-col v-if="pergunta.tipoPergunta.codigo == 4">
                                     <v-text-field
                                         label="Data"
-                                        placeholder="Data de Nascimento"
+                                        placeholder="Data"
                                         outlined
                                         required
                                         :rules="requiredRule"

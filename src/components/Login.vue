@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-content :style="{'background-image': !$vuetify.breakpoint.xsOnly?'url(' + require('../assets/background.jpg') + ')':'url(' + require('../assets/background.jpg') + ')', 'background-size': '100% 100%'}">
+    <v-content :style="{'background-image': !$vuetify.breakpoint.xsOnly?'url()':'url()', 'background-size': '100% 100%'}">
       <v-container
         class="fill-height"
         fluid
@@ -11,9 +11,9 @@
         >
           <v-col
             cols="12"
-            sm="4"
-            md="4"
-            xl="3"
+            sm="6"
+            md="6"
+            xl="4"
           >
             <v-card class="elevation-12">
               <v-toolbar
@@ -27,8 +27,8 @@
               <v-card-text>
                 <v-form>
                   <v-text-field
-                    label="Usuário"
-                    name="usuario"
+                    label="Email"
+                    name="email"
                     v-model="user.usuario"
                     prepend-icon="person"
                     type="text"
@@ -58,6 +58,9 @@
 
 <script>
   export default {
+    created(){
+     this.$store.commit('setLogout');
+    },
     props: {
       source: String
     },

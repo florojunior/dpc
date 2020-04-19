@@ -9,6 +9,7 @@ import Pergunta from '../components/Pergunta'
 import Formulario from '../components/Formulario'
 import Questionario from '../components/Questionario'
 import Acompanhamento from '../components/Acompanhamento'
+import Voluntario from '../components/Voluntario'
 
 Vue.use(VueRouter)
 
@@ -58,6 +59,11 @@ Vue.use(VueRouter)
     name: 'acompanhamento',
     component: Acompanhamento
   },
+  {
+    path: '/voluntario',
+    name: 'voluntario',
+    component: Voluntario
+  }
 ]
 
 const router = new VueRouter({
