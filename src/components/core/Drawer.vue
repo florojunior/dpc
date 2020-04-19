@@ -6,10 +6,14 @@
             width="247px"
         >
         <div class="d-flex flex-column justify-between"  style="height: 100%"> 
-            <v-list-item style="max-height: 64px">
+            <v-list-item style="max-height: 100px">
                 <v-list-item-content style="padding:12px 0 0 0">
                     <v-list-item-title class="text-center">
                         <!--<span class="display-1 textColor--text text-center"> <img style="height: 27px;width: 177; padding-top: 2%;" src="../../assets/logo-kanguru.png"></span>  -->
+                    <span class="text-center"> 
+                        <img style="height: 75px;width: 175px; padding-top: 2%;" src="https://static.wixstatic.com/media/2f060c_0b1b16828b8d4852b1c8c51adb0317ae~mv2.png/v1/fill/w_412,h_239,al_c,lg_1,q_85/2f060c_0b1b16828b8d4852b1c8c51adb0317ae~mv2.webp">
+                    </span>
+                    
                     </v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
@@ -60,12 +64,6 @@
             
 
             <div color="primary" style="flex-grow:1" class="d-flex align-center justify-start">
-                <v-btn text color="white">
-                  INICIAL
-                </v-btn>
-                <v-btn text color="white">
-                  SOBRE NÓS
-                </v-btn>
                 <!--<v-tooltip bottom>
                     <template v-slot:activator="{ on }">
                         <v-btn icon color="white" @click="openDialog()" v-on="on">
@@ -230,7 +228,7 @@ export default {
         },
         logout() {
             this.$http.get('/api-logout/').then(()=>{
-                localStorage.setItem("token_kanguru", null);
+                localStorage.setItem("token_dpc", null);
                 this.$store.commit('setLogout');
                 this.$router.push({name: 'login'},{});
             });

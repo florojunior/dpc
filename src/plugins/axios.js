@@ -12,8 +12,8 @@ Vue.use({
 
 axios.interceptors.request.use(function (config) {  
   
-  //if(localStorage.getItem("token_kanguru")!="null")
-  //  config.headers['Authorization'] = `Token ${localStorage.getItem("token_kanguru")}`;
+  //if(localStorage.getItem("token_dpc")!="null")
+  //  config.headers['Authorization'] = `Token ${localStorage.getItem("token_dpc")}`;
     
     config.headers["Access-Control-Allow-Origin", "*"]; 
     config.headers["Access-Control-Allow-Credentials", "true"]; 
@@ -31,7 +31,7 @@ axios.interceptors.response.use( config => {
     return config;
   }, error => {
     if(error.request.status === 401){
-      localStorage.setItem("token_kanguru",null);
+      localStorage.setItem("token_dpc",null);
       router.push({name: 'login', params:{isRedirect: true}},{});
     }
     if(error.request.status === 500){

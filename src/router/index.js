@@ -1,20 +1,27 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Inicial from '../components/Inicial'
+import Login from '../components/Login'
+//import Inicial from '../components/Inicial'
 import CadastroUsuario from '../components/CadastroUsuario'
 import Parametro from '../components/Parametro'
 import TipoPergunta from '../components/TipoPergunta'
 import Pergunta from '../components/Pergunta'
 import Formulario from '../components/Formulario'
 import Questionario from '../components/Questionario'
+import Acompanhamento from '../components/Acompanhamento'
 
 Vue.use(VueRouter)
 
   const routes = [
   {
     path: '/',
-    name: 'Inicial',
-    component: Inicial
+    name: 'inicial',
+    component: CadastroUsuario
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
   },
   {
     path: '/usuario',
@@ -45,7 +52,12 @@ Vue.use(VueRouter)
     path: '/questionario',
     name: 'questionario',
     component: Questionario
-  }
+  },
+  {
+    path: '/acompanhamento',
+    name: 'acompanhamento',
+    component: Acompanhamento
+  },
 ]
 
 const router = new VueRouter({

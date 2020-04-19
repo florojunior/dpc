@@ -1,5 +1,4 @@
 <template>
-  <v-content>
     <v-container fluid>
         <v-row>
             <v-col>
@@ -44,7 +43,7 @@
                             </v-row>
                             <v-row>
                                 <v-col>
-                                    <v-btn color="primary" outlined style="width:100%" @click="save()" large>Enviar Resposta</v-btn>
+                                    <v-btn color="primary" outlined style="width:100%" @click="save()" large :loading="loading">Enviar Resposta</v-btn>
                                 </v-col>
                             </v-row>
 
@@ -54,7 +53,6 @@
             </v-col>
         </v-row>
     </v-container>
-  </v-content>
 </template>
 
 <script>
@@ -66,6 +64,7 @@ export default {
         requiredRule: [
             v => (!!v) || 'Campo é requirido'
         ],
+        loading: false
     }),
     created:function(){
         this.getAll();
@@ -94,15 +93,18 @@ export default {
         },
         save(){
             if(this.$refs.form.validate()){
-                alert('formvalido');
-                /*this.$http.post("/resposta",this.buildAnswers()).then((res)=>{
-                    console.log(res);
-                })*/
+                this.loading = true;
+                this.$http.post("/resposta",this.buildAnswers()).then(()=>{
+                    this.loading = false;
+                    this.$router.push({name: 'acompanhamento'},{});
+                }).finally(()=>{
+                     this.loading = false;
+                 })
             }
         },
         buildAnswers(){
             var answer = {
-                codigoPessoa:1,
+                codigoPessoa:localStorage.getItem("codigo_usuario"),
                 perguntas:[]
             };
 

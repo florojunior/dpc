@@ -1,11 +1,10 @@
 <template>
-  <v-app>
-
-    <core-drawer />
+  <v-app :style="{'background-image': !$vuetify.breakpoint.xsOnly?'url(' + require('./assets/background.jpg') + ')':'url(' + require('./assets/background.jpg') + ')', 'background-size': '100% 100%'}">
+    <core-drawer v-if="!hide" />
 
     <core-view />
 
-    <core-cta />
+    <core-cta v-if="!hide" />
   </v-app>
 </template>
 
@@ -21,6 +20,14 @@
     data () {
       return {
       //
+      }
+    },
+    computed: {
+      hide() {
+        return !this.isLogged;
+      },
+      isLogged () {
+        return this.$store.state.isLogged;
       }
     }
   }
