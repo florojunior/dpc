@@ -35,7 +35,6 @@
                     <span style="color: rgb(255, 136, 0); font-style: italic"></span>
                 </v-col>
             </v-row>
-
         </div>  
         </v-navigation-drawer>
         <v-app-bar app color="primary" justify="space-between">         
@@ -152,9 +151,8 @@ export default {
         successMessage: false,
         errorMessage: false,
         menu:[
-        
             {
-                descricao:'Formulário',
+                descricao:'Desenvolver Formulário',
                 path:'/formulario',
                 icon:'mdi-file-multiple'
             },
@@ -174,10 +172,10 @@ export default {
                 icon:'mdi-clock'
             },
             {
-                descricao:'Usuario',
-                path:'/usuario',
-                icon:'mdi-clock'
-            }
+                descricao:'Listar Voluntários',
+                path:'/voluntario',
+                icon:'mdi-file-multiple'
+            },
         ],
         userLogged: {},
         mudarSenha: {},

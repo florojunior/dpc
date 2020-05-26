@@ -19,7 +19,7 @@
                   </v-alert>
                   <v-data-table
                   :headers="headers"
-                  :items="perguntaParametroList.perguntas"
+                  :items="perguntaParametroList"
                   item-key="descricao"
                   class="elevation-1"
                   >
@@ -202,6 +202,7 @@ export default {
       }else{
         this.pergunta = {};
       }
+      this.parametrosModelList = [];
       this.dialog = true;
     },
     save(){
@@ -212,6 +213,7 @@ export default {
         this.insert(this.perguntaParametro).then(() => {
             this.dialog=false;
             this.sucessMessage = true;
+            this.$refs.form.reset();
             this.getAll();
             setTimeout(()=>{ this.sucessMessage = false; }, 3000);
         })
@@ -230,7 +232,8 @@ export default {
     },
     getAll(){
       this.$http.get('/pergunta-parametro').then(res => {
-        this.perguntaParametroList = res.data;
+        console.log(res.data);
+        this.perguntaParametroList = (res.data !=null ? res.data.perguntas : []);
       });
     },
     update(pergunta){
